@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { OnboardingScreen } from "./screens";
+import { AsyncStorage } from "react-native";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  const [isAppFirstLaunch, setIsAppFirstLaunch] = React.useState(null);
+
+  React.useEffect(async () => {
+    const app = await AsyncStorage.getItem("isAppFirstLaunch");
+    if (app === null) {
+      setIsAppFirstLaunch(true);
+      AsyncStorage.setItem("isAppFirstLaunch", "false");
+    } else {
+      setIsAppFirstLaunch(false);
+    }
+  }, []);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
