@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { OnboardingScreen } from "./screens";
+import { Dashboard, ForgotScreen, LoginScreen, OnboardingScreen, RegisterScreen } from "./screens";
 import { AsyncStorage } from "react-native";
 
 const Stack = createNativeStackNavigator();
@@ -19,11 +19,17 @@ const App = () => {
     }
   }, []);
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Onboarding" component={OnboardingScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    isAppFirstLaunch != null && (
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          {isAppFirstLaunch && <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />}
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+          <Stack.Screen name="ForgotScreen" component={ForgotScreen} />
+          <Stack.Screen name="Dashboard" component={Dashboard} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    )
   );
 };
 
