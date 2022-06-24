@@ -1,15 +1,16 @@
 import React from "react";
-import { Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView } from "react-native";
+import { Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, Image } from "react-native";
 
 const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#FF7979", text: "#505050" };
 const RegisterScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Warna.putih }}>
+      <Image source={require("../assets/register.png")} style={styles.image}></Image>
       <Text style={styles.tittle}>Welcome!</Text>
       <Text style={styles.subtitle}>Let’s get you signed up.</Text>
       <TextInput style={styles.email} placeholder="Email" />
       <TextInput secureTextEntry={true} style={styles.password} placeholder="Password" />
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Dashboard")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("LoginScreen")}>
         <Text style={styles.textbutton}>Sign Up</Text>
       </TouchableOpacity>
       <Text style={styles.text}>Have an account?</Text>
@@ -21,21 +22,27 @@ const RegisterScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  image: {
+    flex: 1,
+    resizeMode: "contain",
+    justifyContent: "center",
+    marginHorizontal: 60,
+  },
   tittle: {
-    marginTop: 150,
+    marginBottom: 5,
     fontSize: 20,
     fontWeight: "bold",
     textAlign: "center",
   },
   subtitle: {
-    marginTop: 10,
+    marginBottom: 45,
     fontSize: 14,
-    fontWeight: "regular",
+    fontWeight: "normal",
     textAlign: "center",
     color: Warna.text,
   },
   email: {
-    marginTop: 60,
+    marginBottom: 20,
     margin: 20,
     fontSize: 12,
     fontWeight: "bold",
@@ -55,7 +62,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   button: {
-    marginTop: 20,
+    marginBottom: 20,
     backgroundColor: Warna.tombol,
     padding: 20,
     borderRadius: 10,
@@ -74,6 +81,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   text1: {
+    marginBottom: 45,
     color: Warna.tombol,
     textAlign: "center",
     fontWeight: "bold",
