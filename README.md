@@ -1,6 +1,6 @@
 <h3 align="center">Tugas Besar Kelompok 3 Mata Kuliah RPLCP</h3>
 
-## How To Use
+## How To Run
 ```bash
 # Clone this repository
 $ git clone https://github.com/danirafsanjani/ngebus-cak
