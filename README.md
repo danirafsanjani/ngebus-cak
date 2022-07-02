@@ -9,7 +9,7 @@ $ git clone https://github.com/danirafsanjani/ngebus-cak
 $ cd ngebus-cak
 
 # Install dependencies
-$ npm install  --global expo-cli
+$ npm install --global expo-cli
 
 # Run the app
 $ expo start
