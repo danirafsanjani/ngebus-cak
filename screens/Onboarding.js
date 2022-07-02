@@ -24,7 +24,7 @@ const OnboardingScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   title: {
     fontSize: 35,
-    marginTop: 500,
+    marginTop: 450,
     fontWeight: "600",
     color: Warna.putih,
     marginLeft: 25,
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 10,
-    margin: 20,
-    marginTop: 65,
+    margin: 15,
+    marginTop: 55,
     height: 10,
     position: "relative",
     borderRadius: 30,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textbutton: {
-    fontSize: 12,
+    fontSize: 15,
     fontWeight: "bold",
     textAlign: "center",
     color: Warna.hitam,

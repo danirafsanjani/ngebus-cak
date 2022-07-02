@@ -6,34 +6,33 @@ const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", backgroun
 const DashboardScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Warna.background }}>
-      <Image source={require("../assets/profile.png")} style={styles.image}></Image>
-      <Text style={styles.tittle}>Welcome!</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Profile")}>
-        <Text style={styles.text}>Profile</Text>
+      <Text style={styles.tittle}>Welcome to Ngebus Cak!</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SbyBus")}>
+        <Text style={styles.text}>Surabaya Bus</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button1} onPress={() => navigation.navigate("Profile")}>
-        <Text style={styles.text}>Pesan Tiket</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BusKota")}>
+        <Text style={styles.text}>Bus Kota</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("WisataScreen")}>
+        <Text style={styles.text}>Tempat Wisata</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("UKMScreen")}>
+        <Text style={styles.text}>Sentra UKM</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  image: {
-    flex: 1,
-    resizeMode: "contain",
-    width: 20,
-    height: 20,
-    marginLeft: 20,
-    marginTop: 20,
-  },
   tittle: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: "bold",
+    marginTop: 40,
+    marginBottom: 20,
+    textAlign: "center",
   },
   text: {
-    flex: 1,
-    fontSize: 20,
+    fontSize: 15,
     color: Warna.putih,
   },
   button: {
