@@ -11,7 +11,7 @@ class WisataScreen extends Component {
   };
 
   fetchData = () => {
-    fetch(`http://suroboyobus.com/gobis/sbybus/wisata/listcat/`)
+    fetch(`http://suroboyobus.com/gobis/sbybus/wisata/listcat`)
       .then((response) => response.json())
       .then((json) => this.setState({ wisata: json }))
       .catch((error) => console.error(error))

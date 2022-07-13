@@ -7,10 +7,10 @@ const DashboardScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Warna.background }}>
       <Text style={styles.tittle}>Welcome to Ngebus Cak!</Text>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SbyBus")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SbyBusScreen")}>
         <Text style={styles.text}>Surabaya Bus</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BusKota")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BusKotaScreen")}>
         <Text style={styles.text}>Bus Kota</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("WisataScreen")}>

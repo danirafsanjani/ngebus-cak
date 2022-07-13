@@ -1,62 +1,43 @@
-import React, { Component } from "react";
-import { Box, Center, Text, FlatList, Spinner } from "native-base";
-import { StyleSheet, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { Center, Spinner, Text, Box, ScrollView, Image } from "native-base";
+import { StyleSheet } from "react-native";
 
 const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#FF7171" };
 
-class WisataDetailScreen1 extends Component {
-  state = {
-    isWisataLoading: true,
-    wisata: [],
-  };
-
-  fetchData = () => {
-    const { route } = this.props;
+const WisataDetailScreen1 = ({ route }) => {
+  const [isLoading, setLoading] = useState(true);
+  const [wisataDetail, setWisataDetail] = useState([]);
+  useEffect(() => {
     fetch(`http://suroboyobus.com/gobis/sbybus/wisata/detil/${route.params.id}`)
       .then((response) => response.json())
-      .then((json) => this.setState({ wisata: json }))
+      .then((json) => setWisataDetail(json))
       .catch((error) => console.error(error))
-      .finally(() => this.setState({ isWisataLoading: false }));
-  };
+      .finally(() => setLoading(false));
+    console.log(wisataDetail);
+  });
 
-  componentDidMount = () => {
-    this.fetchData();
-  };
-
-  renderItem = ({ item }) => {
-    return (
-      <ScrollView>
-        <Box style={styles.box}>
-          <Text style={styles.tittle}>{item.nama}</Text>
-        </Box>
-      </ScrollView>
-    );
-  };
-
-  render() {
-    const { isWisataLoading, wisata } = this.state;
-    return (
-      <>
-        {isWisataLoading ? (
-          <Center flex={1}>
-            <Spinner color={Warna.tombol} size="lg" />
-          </Center>
-        ) : (
-          <FlatList data={wisata} renderItem={this.renderItem} refreshing={isWisataLoading} />
-        )}
-      </>
-    );
-  }
-}
+  return (
+    <>
+      {isLoading ? (
+        <Center flex={1}>
+          <Spinner size="lg" color={Warna.tombol} />
+        </Center>
+      ) : (
+        <ScrollView>
+          <Box>
+            <Text style={styles.tittle}>{wisataDetail.nama}</Text>
+            <Image style={styles.image} source={{ uri: "http://www.suroboyobus.com/gobis/public/images/wisata/" + wisataDetail.picture }} />
+            <Text style={styles.subtittle}>{wisataDetail.description}</Text>
+          </Box>
+        </ScrollView>
+      )}
+    </>
+  );
+};
 
 const styles = StyleSheet.create({
-  box: {
-    backgroundColor: Warna.tombol,
-    padding: 20,
-    borderRadius: 10,
-    margin: 20,
-  },
   tittle: {
+    flex: 1,
     fontSize: 20,
     color: Warna.hitam,
   },
@@ -65,8 +46,8 @@ const styles = StyleSheet.create({
     color: Warna.putih,
   },
   image: {
-    width: "20%",
-    height: "20%",
+    width: "100%",
+    height: "100%",
   },
 });
 

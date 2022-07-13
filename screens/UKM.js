@@ -11,7 +11,7 @@ class UKMScreen extends Component {
   };
 
   fetchData = () => {
-    fetch(`http://suroboyobus.com/gobis/sbybus/ukm/listcat/`)
+    fetch(`http://suroboyobus.com/gobis/sbybus/ukm/listcat`)
       .then((response) => response.json())
       .then((json) => this.setState({ ukm: json }))
       .catch((error) => console.error(error))

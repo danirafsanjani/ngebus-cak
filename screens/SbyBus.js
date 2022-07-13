@@ -30,9 +30,11 @@ const styles = StyleSheet.create({
     backgroundColor: Warna.tombol,
     padding: 20,
     borderRadius: 10,
+    margin: 20,
   },
   text: {
-    fontSize: 20,
+    fontSize: 15,
+    color: Warna.putih,
   },
 });
 

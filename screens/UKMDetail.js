@@ -40,7 +40,7 @@ class UKMDetailScreen extends Component {
     const { isUKMLoading, ukm } = this.state;
     return (
       <>
-        {isWisataLoading ? (
+        {isUKMLoading ? (
           <Center flex={1}>
             <Spinner color={Warna.tombol} size="lg" />
           </Center>
