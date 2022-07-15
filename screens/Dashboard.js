@@ -10,9 +10,6 @@ const DashboardScreen = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SbyBusScreen")}>
         <Text style={styles.text}>Surabaya Bus</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("BusKotaScreen")}>
-        <Text style={styles.text}>Bus Kota</Text>
-      </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("WisataScreen")}>
         <Text style={styles.text}>Tempat Wisata</Text>
       </TouchableOpacity>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Center, Spinner, Text, Box, ScrollView, Image } from "native-base";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
+const { width, height } = Dimensions.get("window");
 const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#FF7171" };
 
 const UKMDetailScreen1 = ({ route }) => {
@@ -14,7 +15,7 @@ const UKMDetailScreen1 = ({ route }) => {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
     console.log(UKMDetail);
-  });
+  }, []);
 
   return (
     <>
@@ -26,7 +27,8 @@ const UKMDetailScreen1 = ({ route }) => {
         <ScrollView>
           <Box>
             <Text style={styles.tittle}>{UKMDetail.nama}</Text>
-            <Image source={{ uri: UKMDetail.description }} style={styles.image} />
+            <Image source={{ uri: "http://www.suroboyobus.com/gobis/public/images/ukm/" + UKMDetail.picture }} style={styles.image} />
+            <Text style={styles.tittle}>{UKMDetail.description.img}</Text>
           </Box>
         </ScrollView>
       )}
@@ -37,16 +39,18 @@ const UKMDetailScreen1 = ({ route }) => {
 const styles = StyleSheet.create({
   tittle: {
     flex: 1,
+    marginTop: 20,
     fontSize: 20,
     color: Warna.hitam,
   },
   subtittle: {
     fontSize: 15,
-    color: Warna.putih,
+    color: Warna.hitam,
   },
   image: {
-    width: "50%",
-    height: "50%",
+    resizeMode: "contain",
+    width: width,
+    height: height,
   },
 });
 

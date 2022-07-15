@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Center, Spinner, Text, Box, ScrollView, Image } from "native-base";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
+const { width, height } = Dimensions.get("window");
 const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#FF7171" };
 
 const WisataDetailScreen1 = ({ route }) => {
@@ -14,7 +15,7 @@ const WisataDetailScreen1 = ({ route }) => {
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
     console.log(wisataDetail);
-  });
+  }, []);
 
   return (
     <>
@@ -38,16 +39,18 @@ const WisataDetailScreen1 = ({ route }) => {
 const styles = StyleSheet.create({
   tittle: {
     flex: 1,
+    marginTop: 50,
     fontSize: 20,
     color: Warna.hitam,
   },
   subtittle: {
     fontSize: 15,
-    color: Warna.putih,
+    color: Warna.hitam,
   },
   image: {
-    width: "100%",
-    height: "100%",
+    resizeMode: "contain",
+    width: width,
+    height: height,
   },
 });
 

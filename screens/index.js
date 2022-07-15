@@ -1,7 +1,3 @@
-import OnboardingScreen from "./Onboarding";
-import LoginScreen from "./Login";
-import RegisterScreen from "./Register";
-import ForgotScreen from "./Forgot";
 import DashboardScreen from "./Dashboard";
 import SbyBusScreen from "./SbyBus";
 import WisataScreen from "./Wisata";
@@ -17,10 +13,6 @@ import SbyBusDetailScreen4 from "./SbyBusDetail4";
 import SbyBusDetailScreen5 from "./SbyBusDetail5";
 
 export {
-  OnboardingScreen,
-  LoginScreen,
-  RegisterScreen,
-  ForgotScreen,
   DashboardScreen,
   SbyBusScreen,
   WisataScreen,

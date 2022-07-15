@@ -1,66 +1,48 @@
-import React, { Component } from "react";
-import { Center, FlatList, Spinner } from "native-base";
-import { StyleSheet, SafeAreaView, Dimensions } from "react-native";
+import React, { useState, useEffect } from "react";
 import MapView from "react-native-maps";
+import { StyleSheet, View, Dimensions } from "react-native";
 
-const { width, height } = Dimensions.get("window");
-const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#FF7171" };
+const SbyBusDetail4 = () => {
+  const [markers, updatemarkers] = useState([]);
+  const [mapready, setmapready] = useState(false);
 
-class SbyBusDetailScreen4 extends Component {
-  state = {
-    isMapLoading: true,
-    map: [],
-  };
-
-  fetchData = () => {
-    fetch(`http://suroboyobus.com/gobis/sbybus/bustrackmerr`)
+  useEffect(() => {
+    fetch("http://suroboyobus.com/gobis/sbybus/bustrackmerr")
       .then((response) => response.json())
-      .then((json) => this.setState({ maps: json }))
-      .catch((error) => console.error(error))
-      .finally(() => this.setState({ isMapLoading: false }));
-  };
-
-  componentDidMount = () => {
-    this.fetchData();
-  };
-
-  renderItem = ({ item }) => {
-    return (
-      <SafeAreaView style={styles.container}>
-        <MapView
-          style={styles.map}
-          provider={PROVIDER_GOOGLE}
-          title={item.info}
-          coordinate={{
-            latitude: item.lat,
-            longitude: item.lng,
-          }}
-        />
-      </SafeAreaView>
-    );
-  };
-
-  render() {
-    const { isMapLoading, map } = this.state;
-    return (
-      <>
-        {isMapLoading ? (
-          <Center flex={1}>
-            <Spinner color={Warna.tombol} size="lg" />
-          </Center>
-        ) : (
-          <FlatList data={map} renderItem={this.renderItem} refreshing={isMapLoading} />
-        )}
-      </>
-    );
-  }
-}
+      .then((json) => {
+        let busnya = [];
+        for (let ab of json) {
+          busnya.push({ index: busnya.length, coords: { latitude: parseFloat(ab.lat), longitude: parseFloat(ab.lng) }, id: ab.info });
+        }
+        updatemarkers(busnya);
+        setmapready(true);
+        console.log("markers:", markers.length);
+      })
+      .catch((error) => console.error(error));
+  });
+  return (
+    <View style={styles.container}>
+      <MapView style={styles.map}>
+        {markers.map((marker) => (
+          <MapView.Marker coordinate={marker.coords} title={marker.info} index={marker.index} />
+        ))}
+      </MapView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+
+    justifyContent: "center",
+  },
   map: {
-    width: width,
-    height: height,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
 });
 
-export default SbyBusDetailScreen4;
+export default SbyBusDetail4;
