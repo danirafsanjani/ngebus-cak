@@ -26,9 +26,8 @@ const UKMDetailScreen1 = ({ route }) => {
       ) : (
         <ScrollView>
           <Box>
-            <Text style={styles.tittle}>{UKMDetail.nama}</Text>
             <Image source={{ uri: "http://www.suroboyobus.com/gobis/public/images/ukm/" + UKMDetail.picture }} style={styles.image} />
-            <Text style={styles.tittle}>{UKMDetail.description.img}</Text>
+            <Text style={styles.tittle}>{UKMDetail.nama}</Text>
           </Box>
         </ScrollView>
       )}
@@ -39,18 +38,25 @@ const UKMDetailScreen1 = ({ route }) => {
 const styles = StyleSheet.create({
   tittle: {
     flex: 1,
-    marginTop: 20,
-    fontSize: 20,
+    fontSize: 21,
+    marginBottom: 20,
+    fontWeight: "bold",
+    textAlign: "center",
     color: Warna.hitam,
   },
   subtittle: {
-    fontSize: 15,
+    fontSize: 20,
+    textAlign: "center",
+    marginHorizontal: 30,
     color: Warna.hitam,
   },
   image: {
-    resizeMode: "contain",
-    width: width,
-    height: height,
+    marginBottom: 20,
+    alignSelf: "center",
+    borderRadius: 10,
+    marginTop: 50,
+    width: 300,
+    height: 200,
   },
 });
 

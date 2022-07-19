@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Box, Center, Text, FlatList, Spinner } from "native-base";
-import { TouchableOpacity, StyleSheet, ScrollView } from "react-native";
+import { TouchableOpacity, StyleSheet, ScrollView, Image } from "react-native";
 
-const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#FF7171" };
+const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#F4F4F4" };
 
 class WisataScreen extends Component {
   state = {
@@ -26,12 +26,11 @@ class WisataScreen extends Component {
     const { navigation } = this.props;
     return (
       <ScrollView>
-        <TouchableOpacity onPress={() => navigation.navigate("WisataDetail", { id: item.uniqid })}>
-          <Box style={styles.box}>
+        <Box style={styles.box}>
+          <TouchableOpacity onPress={() => navigation.navigate("WisataDetail", { id: item.uniqid })}>
             <Text style={styles.text}>{item.nama}</Text>
-            <Text style={styles.text}>{item.total}</Text>
-          </Box>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </Box>
       </ScrollView>
     );
   };
@@ -45,7 +44,11 @@ class WisataScreen extends Component {
             <Spinner color={Warna.tombol} size="lg" />
           </Center>
         ) : (
-          <FlatList data={wisata} renderItem={this.renderItem} refreshing={isWisataLoading} />
+          <ScrollView>
+            <Text style={styles.textlogo}>Tour Destination</Text>
+            <Image style={styles.logo} source={require("../assets/wisata.png")} />
+            <FlatList data={wisata} renderItem={this.renderItem} refreshing={isWisataLoading} />
+          </ScrollView>
         )}
       </>
     );
@@ -53,15 +56,28 @@ class WisataScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  textlogo: {
+    marginTop: 35,
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  logo: {
+    marginTop: 20,
+    width: 260,
+    height: 260,
+    borderRadius: 10,
+    alignSelf: "center",
+  },
   box: {
-    backgroundColor: Warna.tombol,
+    backgroundColor: Warna.putih,
     padding: 20,
     borderRadius: 10,
     margin: 20,
   },
   text: {
     fontSize: 15,
-    color: Warna.putih,
+    color: Warna.hitam,
   },
 });
 

@@ -1,11 +1,13 @@
 import React from "react";
-import { Text, SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, ScrollView, StyleSheet, TouchableOpacity, Image, Dimensions } from "react-native";
 
-const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#FF7171" };
+const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#F2EBE9", background: "#F4F4F4" };
 
 const SbyBusScreen = ({ navigation }) => {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Warna.background }}>
+    <ScrollView style={{ flex: 1, backgroundColor: Warna.background }}>
+      <Text style={styles.textlogo}>Surabaya Bus</Text>
+      <Image style={styles.logo} source={require("../assets/bus.png")} />
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SbyBusDetail1")}>
         <Text style={styles.text}>PURABAYA-RAJAWALI</Text>
       </TouchableOpacity>
@@ -21,20 +23,34 @@ const SbyBusScreen = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SbyBusDetail5")}>
         <Text style={styles.text}>TIJ-YONO SUWOYO</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  textlogo: {
+    marginTop: 45,
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  logo: {
+    marginTop: 20,
+    width: 260,
+    height: 260,
+    borderRadius: 10,
+    alignSelf: "center",
+  },
   button: {
-    backgroundColor: Warna.tombol,
+    backgroundColor: Warna.putih,
     padding: 20,
     borderRadius: 10,
     margin: 20,
   },
   text: {
+    textAlign: "center",
     fontSize: 15,
-    color: Warna.putih,
+    color: Warna.hitam,
   },
 });
 

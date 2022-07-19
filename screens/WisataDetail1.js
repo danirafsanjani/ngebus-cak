@@ -26,8 +26,8 @@ const WisataDetailScreen1 = ({ route }) => {
       ) : (
         <ScrollView>
           <Box>
-            <Text style={styles.tittle}>{wisataDetail.nama}</Text>
             <Image style={styles.image} source={{ uri: "http://www.suroboyobus.com/gobis/public/images/wisata/" + wisataDetail.picture }} />
+            <Text style={styles.tittle}>{wisataDetail.nama}</Text>
             <Text style={styles.subtittle}>{wisataDetail.description}</Text>
           </Box>
         </ScrollView>
@@ -39,18 +39,25 @@ const WisataDetailScreen1 = ({ route }) => {
 const styles = StyleSheet.create({
   tittle: {
     flex: 1,
-    marginTop: 50,
-    fontSize: 20,
+    fontSize: 21,
+    marginBottom: 20,
+    fontWeight: "bold",
+    textAlign: "center",
     color: Warna.hitam,
   },
   subtittle: {
-    fontSize: 15,
+    fontSize: 20,
+    textAlign: "center",
+    marginHorizontal: 30,
     color: Warna.hitam,
   },
   image: {
-    resizeMode: "contain",
-    width: width,
-    height: height,
+    marginBottom: 20,
+    alignSelf: "center",
+    borderRadius: 10,
+    marginTop: 50,
+    width: 300,
+    height: 200,
   },
 });
 

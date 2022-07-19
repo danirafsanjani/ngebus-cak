@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Box, Center, Text, FlatList, Spinner } from "native-base";
 import { TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 
-const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#FF7171" };
+const Warna = { putih: "#FFFFFF", hitam: "#000000", tombol: "#EE4343", background: "#F4F4F4" };
 
 class UKMDetailScreen extends Component {
   state = {
@@ -54,14 +54,14 @@ class UKMDetailScreen extends Component {
 
 const styles = StyleSheet.create({
   box: {
-    backgroundColor: Warna.tombol,
+    backgroundColor: Warna.putih,
     padding: 20,
     borderRadius: 10,
     margin: 20,
   },
   text: {
     fontSize: 15,
-    color: Warna.putih,
+    color: Warna.hitam,
   },
 });
 

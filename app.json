@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ngebus-cak",
+    "name": "NgebusCak!",
     "slug": "ngebus-cak",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -23,8 +23,11 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#FFFFFF",
+        "package": "com.RPLCP.ngebuscak",
+        "versionCode": 1
+      },
+      "package": "com.danirafsanjani.ngebuscak"
     },
     "web": {
       "favicon": "./assets/favicon.png"
